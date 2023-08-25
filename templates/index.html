@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Fraud Prediction</title>
+
+ 
+ <style>
+    div{
+             color:white;
+         }
+         h1{
+             color:#1f3c77;
+             font-family: arial, sans-serif;
+             font-size: 60px;
+             font-weight: bold;
+             margin-top: 100px;
+         }
+         h3{
+             color:#4b4545;
+             font-family: arial, sans-serif;
+             font-size: 17px;
+             font-weight: bold;
+             margin-top: 2px;
+         }
+ </style>
+
+</head>
+
+<body style= "background-color:rgba(65, 101, 140, 0.729)">
+ <div align = 'center'>
+	<h1>Online Payment Fraud Prediction </h1>
+	<div class="bd-example" align="middle">
+ 
+
+</div>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="step" placeholder="Step" required="required" /><br>
+        <input type="text" name="type" placeholder="Type" required="required" /><br>
+		<input type="text" name="amount" placeholder="Amount" required="required" /><br>
+		<input type="text" name="oldbalanceOrg" placeholder="OldBalanceOrigin" required="required" /><br>
+		<input type="text" name="newbalanceOrig" placeholder="NewBalanceOrigin" required="required" /><br>
+		<input type="text" name="oldbalanceDest" placeholder="OldBalanceDestination" required="required" /><br>
+		<input type="text" name="newbalanceDest" placeholder="NewBalanceDestination" required="required" /><br>
+		<input type="text" name="isFlaggedFraud" placeholder="IsFlaggedFraud" required="required" /><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    
+    <br><br><h3>{{ prediction_text }}<h3>
+  
+</div>
+
+<h2 style= 'color:#0033cc'> Information About Attributes In Online Payment: </h2>
+<h3>type: type of online transaction</h3>
+<h3>amount: the amount of the transaction</h3>
+<h3>oldbalanceOrg: balance before the transaction </h3> 
+<h3>newbalanceOrig: balance after the transaction</h3> 
+<h3>nameDest: recipient of the transaction </h3> 
+<h3> oldbalanceDest: initial balance of recipient before the transaction </h3>
+<h3> newbalanceDest: the new balance of recipient after the transaction </h3>
+ <h3>step: represents a unit of time where 1 step equals 1 hour </h3>
+
+
+</body>
+
+</html>
